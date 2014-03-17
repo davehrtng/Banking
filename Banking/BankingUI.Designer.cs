@@ -1,6 +1,6 @@
 ﻿namespace Banking
 {
-    partial class Form1
+    partial class BankingUI
     {
         /// <summary>
         /// Required designer variable.
