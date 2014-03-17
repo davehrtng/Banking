@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Banking
 {
-    class Account
+    public class Account
     {
         // members
-        Name name; 
+        String name; 
         decimal balance;
         IList<Transaction> transactions;
 
         // public interface
-        public Account(Name nm)
+        public Account(String nm)
         {
             name = nm; 
             balance = 0.00m;
@@ -22,7 +22,7 @@ namespace Banking
         }
         
         // properties
-        public Name Name
+        public String Name
         {
             get { return name; }
             set { name = value; }
