@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Account.cs" />
+    <Compile Include="Entity\Transaction.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
