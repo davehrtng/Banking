@@ -33,5 +33,12 @@ namespace BankingTest
             trans.Amount = -400.00m; 
             decimal amt_t2 = trans.Amount; 
         }
+
+        [TestMethod]
+        public void transaction_toCSV()
+        {
+            Transaction trans = new Transaction(-40.00m, new DateTime(1992, 11, 18), Transaction.Type.debit);
+            String csv = trans.toCSV(); 
+        }
     }
 }

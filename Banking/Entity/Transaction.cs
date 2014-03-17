@@ -38,6 +38,13 @@ namespace Banking
             get { return type; }
             set { type = value; }
         }
-        
+
+
+        public String toCSV()
+        {
+            String result = "";
+            result += amount + "," + date.ToShortDateString() + "," + type;
+            return result; 
+        }
     }
 }

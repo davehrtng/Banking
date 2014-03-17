@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AccountTest.cs" />
     <Compile Include="NameTest.cs" />
+    <Compile Include="TransactionSystemTest.cs" />
     <Compile Include="TransactionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

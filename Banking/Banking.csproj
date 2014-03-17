@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Deposit.cs" />
+    <Compile Include="Controller\Transfer.cs" />
+    <Compile Include="Controller\Withdraw.cs" />
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\Name.cs" />
     <Compile Include="Entity\Transaction.cs" />
@@ -55,6 +58,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\AccountSystem.cs" />
+    <Compile Include="System\TransactionSystem.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
