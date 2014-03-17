@@ -23,10 +23,28 @@ namespace Banking
 
         public bool Save(Account acct)
         {
-            bool success = true; 
-            using (StreamWriter writer = new StreamWriter(path))
+            bool success = true;
+            if (File.Exists(path))
             {
-                writer.WriteLine(acct.Name); 
+                using (StreamWriter writer = new StreamWriter(path))
+                {
+                    writer.WriteLine(acct.Name);
+                }
+                try
+                {
+                    TransactionSystem objSystem = new TransactionSystem(); 
+                    // TODO: append the transactions to the end of the account file
+                }
+                catch(InvalidCastException e)
+                {
+                    
+                }
+                success = true;
+            }
+            else
+            {
+                success = false;
+                throw new FileNotFoundException(); 
             }
             return success;  
         }
