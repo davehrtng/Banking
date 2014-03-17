@@ -20,7 +20,20 @@ namespace BankingTest
         [TestMethod]
         public void account_create_and_get_props()
         {
+            Account savings = new Account("savings", createTransactions());
+            String name = savings.Name;
+            decimal balance = savings.Balance;
+            IList<Transaction> transactions = savings.Transactions; 
+        }
 
+        [TestMethod]
+        public void account_deposit_withdraw()
+        {
+            Account savings = new Account("savings");
+            savings.Deposit(500.00m);
+            savings.Deposit(250.00m);
+            savings.Withdraw(201.87m);
+            savings.Withdraw(183.23m); 
         }
     }
 }
