@@ -36,13 +36,13 @@ namespace Banking
             this.lblDate = new System.Windows.Forms.Label();
             this.gbAccount = new System.Windows.Forms.GroupBox();
             this.gbTransaction = new System.Windows.Forms.GroupBox();
-            this.cbTransaction = new System.Windows.Forms.ComboBox();
-            this.tbAmount = new System.Windows.Forms.TextBox();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.lblToAccount = new System.Windows.Forms.Label();
-            this.lblFromAccount = new System.Windows.Forms.Label();
-            this.btnAddTransaction = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnAddTransaction = new System.Windows.Forms.Button();
+            this.lblFromAccount = new System.Windows.Forms.Label();
+            this.lblToAccount = new System.Windows.Forms.Label();
+            this.lblAmount = new System.Windows.Forms.Label();
+            this.tbAmount = new System.Windows.Forms.TextBox();
+            this.cbTransaction = new System.Windows.Forms.ComboBox();
             this.lbHistory = new System.Windows.Forms.ListBox();
             this.gbAccount.SuspendLayout();
             this.gbTransaction.SuspendLayout();
@@ -68,6 +68,7 @@ namespace Banking
             this.cbAccount.Size = new System.Drawing.Size(121, 21);
             this.cbAccount.TabIndex = 1;
             this.cbAccount.Text = "Pick an account";
+            this.cbAccount.SelectedIndexChanged += new System.EventHandler(this.cbAccount_SelectedIndexChanged);
             // 
             // lblBalance
             // 
@@ -127,6 +128,58 @@ namespace Banking
             this.gbTransaction.TabStop = false;
             this.gbTransaction.Text = "Make a transaction";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(91, 171);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 6;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnAddTransaction
+            // 
+            this.btnAddTransaction.Location = new System.Drawing.Point(9, 171);
+            this.btnAddTransaction.Name = "btnAddTransaction";
+            this.btnAddTransaction.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTransaction.TabIndex = 5;
+            this.btnAddTransaction.Text = "Confirm";
+            this.btnAddTransaction.UseVisualStyleBackColor = true;
+            // 
+            // lblFromAccount
+            // 
+            this.lblFromAccount.AutoSize = true;
+            this.lblFromAccount.Location = new System.Drawing.Point(6, 139);
+            this.lblFromAccount.Name = "lblFromAccount";
+            this.lblFromAccount.Size = new System.Drawing.Size(33, 13);
+            this.lblFromAccount.TabIndex = 4;
+            this.lblFromAccount.Text = "From:";
+            // 
+            // lblToAccount
+            // 
+            this.lblToAccount.AutoSize = true;
+            this.lblToAccount.Location = new System.Drawing.Point(6, 126);
+            this.lblToAccount.Name = "lblToAccount";
+            this.lblToAccount.Size = new System.Drawing.Size(23, 13);
+            this.lblToAccount.TabIndex = 3;
+            this.lblToAccount.Text = "To:";
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Location = new System.Drawing.Point(6, 85);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(46, 13);
+            this.lblAmount.TabIndex = 2;
+            this.lblAmount.Text = "Amount:";
+            // 
+            // tbAmount
+            // 
+            this.tbAmount.Location = new System.Drawing.Point(58, 78);
+            this.tbAmount.Name = "tbAmount";
+            this.tbAmount.Size = new System.Drawing.Size(72, 20);
+            this.tbAmount.TabIndex = 1;
+            // 
             // cbTransaction
             // 
             this.cbTransaction.FormattingEnabled = true;
@@ -139,58 +192,6 @@ namespace Banking
             this.cbTransaction.Size = new System.Drawing.Size(121, 21);
             this.cbTransaction.TabIndex = 0;
             this.cbTransaction.Text = "Pick a transaction";
-            // 
-            // tbAmount
-            // 
-            this.tbAmount.Location = new System.Drawing.Point(58, 78);
-            this.tbAmount.Name = "tbAmount";
-            this.tbAmount.Size = new System.Drawing.Size(72, 20);
-            this.tbAmount.TabIndex = 1;
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(6, 85);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(46, 13);
-            this.lblAmount.TabIndex = 2;
-            this.lblAmount.Text = "Amount:";
-            // 
-            // lblToAccount
-            // 
-            this.lblToAccount.AutoSize = true;
-            this.lblToAccount.Location = new System.Drawing.Point(6, 126);
-            this.lblToAccount.Name = "lblToAccount";
-            this.lblToAccount.Size = new System.Drawing.Size(23, 13);
-            this.lblToAccount.TabIndex = 3;
-            this.lblToAccount.Text = "To:";
-            // 
-            // lblFromAccount
-            // 
-            this.lblFromAccount.AutoSize = true;
-            this.lblFromAccount.Location = new System.Drawing.Point(6, 139);
-            this.lblFromAccount.Name = "lblFromAccount";
-            this.lblFromAccount.Size = new System.Drawing.Size(33, 13);
-            this.lblFromAccount.TabIndex = 4;
-            this.lblFromAccount.Text = "From:";
-            // 
-            // btnAddTransaction
-            // 
-            this.btnAddTransaction.Location = new System.Drawing.Point(9, 171);
-            this.btnAddTransaction.Name = "btnAddTransaction";
-            this.btnAddTransaction.Size = new System.Drawing.Size(75, 23);
-            this.btnAddTransaction.TabIndex = 5;
-            this.btnAddTransaction.Text = "Confirm";
-            this.btnAddTransaction.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(91, 171);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 6;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
             // 
             // lbHistory
             // 

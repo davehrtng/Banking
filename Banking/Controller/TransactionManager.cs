@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Banking
 {
-    class TransactionManager
+    public class TransactionManager
     {
         // members
         private IList<Transaction> transactions;
@@ -53,6 +53,7 @@ namespace Banking
 
         public Transaction Add(decimal amt, DateTime dateTime, TransactionType type)
         {
+            // TODO: prevent debits from overdrawing 
             Transaction trans = new Transaction(amt, dateTime, type);
             Repository repo = new Repository(accountType); // consider making private member
             trans = repo.Post(trans);

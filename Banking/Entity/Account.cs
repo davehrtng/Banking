@@ -40,10 +40,20 @@ namespace Banking
         }
 
         // withdraw money from account
-        public void Withdraw(decimal amt)
+        public bool Withdraw(decimal amt)
         {
-            objTransactionManager.Add(amt, DateTime.Today, TransactionType.debit);
-            balance = objTransactionManager.ComputeBalance(); 
+            bool result; 
+            if (amt <= balance)
+            {
+                objTransactionManager.Add(amt, DateTime.Today, TransactionType.debit);
+                balance = objTransactionManager.ComputeBalance();
+                result = true; 
+            }
+            else
+            {
+                result = false; 
+            }
+            return result; 
         }
         
         // properties

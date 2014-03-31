@@ -21,5 +21,17 @@ namespace Banking
         {
 
         }
+
+        private void cbAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbAccount.SelectedValue.ToString().Equals("Checking"))
+            {
+                MessageBox.Show("you picked checking"); 
+            }
+            else if (cbAccount.SelectedValue.ToString().Equals("Savings"))
+            {
+                MessageBox.Show("you picked savings"); 
+            }
+        }
     }
 }

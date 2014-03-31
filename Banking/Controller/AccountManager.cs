@@ -16,27 +16,83 @@ namespace Banking
         public AccountManager()
         {
             checking = new Account(AccountType.checking);
-            savings = new Account(AccountType.savings); 
+            savings = new Account(AccountType.savings);
         }
 
         // properties
 
         // public functions 
-        public void Deposit(AccountType type, decimal amt, DateTime datetime)
+        public void Deposit(AccountType type, decimal amt)
         {
-
+            if (type == AccountType.checking)
+            {
+                checking.Deposit(amt);
+            }
+            else
+            {
+                savings.Deposit(amt);
+            }
         }
-        public void Withdraw(AccountType type, decimal amt, DateTime datetime)
+        public bool Withdraw(AccountType type, decimal amt)
         {
-
+            bool result;
+            if (type == AccountType.checking)
+            {
+                if (checking.Withdraw(amt))
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            else
+            {
+                if (savings.Withdraw(amt))
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            return result;
         }
-        public void Transfer(AccountType fromAccount, AccountType toAccount, decimal amt)
+        public bool Transfer(AccountType fromAccount, AccountType toAccount, decimal amt)
         {
+            bool result;
+            if (fromAccount == AccountType.checking)
+            {
+                if (checking.Withdraw(amt))
+                {
+                    savings.Deposit(amt);
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            else
+            {
 
+                if (savings.Withdraw(amt))
+                {
+                    checking.Deposit(amt);
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            return result;
         }
         public IList<Transaction> GetTransactions(AccountType type)
         {
-            throw new NotImplementedException(); 
+            throw new NotImplementedException();
         }
     }
 }
