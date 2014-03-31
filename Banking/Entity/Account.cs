@@ -8,68 +8,48 @@ namespace Banking
 {
     public class Account
     {
-        // members
-        String name; 
+        
+        // members 
         decimal balance;
-        IList<Transaction> transactions;
+        AccountType type;
+        TransactionManager objTransactionManager; 
 
         // private functions
         private void updateBalance()
         {
-            decimal result = 0.00m; 
-            foreach (Transaction trans in transactions)
-            {
-                if (trans.CreditOrDebit == Transaction.Type.credit)
-                {
-                    result += trans.Amount;
-                }
-                else
-                {
-                    result -= trans.Amount; 
-                }
-            }
+            decimal result = 0.00m;
+            result = objTransactionManager.ComputeBalance();
             balance = result;  
         }
 
         // public interface
 
         // constructor for fresh account
-        public Account(String nm)
+        public Account(AccountType typ)
         {
-            name = nm; 
             balance = 0.00m;
-            transactions = new List<Transaction>();
-        }
-
-        // constructor with transaction history 
-        public Account(String nm, IList<Transaction> history)
-        {
-            name = nm;
-            transactions = history;
-            updateBalance();  
+            type = typ; 
+            objTransactionManager = new TransactionManager(type);
         }
 
         // deposit money into account 
         public void Deposit(decimal amt)
         {
-            Transaction deposit = new Transaction(amt, DateTime.Today, Transaction.Type.credit);
-            transactions.Add(deposit);
-            updateBalance(); 
+            objTransactionManager.Add(amt, DateTime.Today, TransactionType.credit);
+            balance = objTransactionManager.ComputeBalance(); 
         }
 
         // withdraw money from account
         public void Withdraw(decimal amt)
         {
-            Transaction withdrawal = new Transaction(amt, DateTime.Today, Transaction.Type.debit);
-            transactions.Add(withdrawal);
-            updateBalance(); 
+            objTransactionManager.Add(amt, DateTime.Today, TransactionType.debit);
+            balance = objTransactionManager.ComputeBalance(); 
         }
         
         // properties
-        public String Name
+        public AccountType Type
         {
-            get { return name; }
-            set { name = value; }
+            get { return type; } 
         }
         public decimal Balance
         {
@@ -77,7 +57,10 @@ namespace Banking
         }
         public IList<Transaction> Transactions
         {
-            get { return transactions; }
+            get { return objTransactionManager.Transactions; }
         }
     }
+
+    // account type - static member
+    public enum AccountType { checking, savings }; 
 }

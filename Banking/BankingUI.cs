@@ -16,5 +16,10 @@ namespace Banking
         {
             InitializeComponent();
         }
+
+        private void lblBalance_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

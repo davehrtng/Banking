@@ -13,67 +13,31 @@ namespace BankingTest
         private IList<Transaction> createTransactions()
         {
             IList<Transaction> transactions = new List<Transaction>();
-            transactions.Add(new Transaction(500.00m, new DateTime(2014, 2, 23), Transaction.Type.credit));
-            transactions.Add(new Transaction(200.00m, new DateTime(2014, 3, 1), Transaction.Type.debit));
-            transactions.Add(new Transaction(135.50m, new DateTime(2014, 3, 12), Transaction.Type.debit));
+            transactions.Add(new Transaction(500.00m, new DateTime(2014, 2, 23), TransactionType.credit));
+            transactions.Add(new Transaction(200.00m, new DateTime(2014, 3, 1), TransactionType.debit));
+            transactions.Add(new Transaction(135.50m, new DateTime(2014, 3, 12), TransactionType.debit));
             return transactions;
         }
 
         [TestMethod]
-        public void save_transaction_list()
+        public void trans_system_post()
         {
-            TransactionSystem objSystem = new TransactionSystem();
-            bool success = objSystem.Save(createTransactions(), "C:\\Users\\David\\SkyDrive\\School\\Spring 2014\\OOD\\Assignments\\Assignment 3\\Save Files\\Savings.txt"); 
+            Transaction transaction1 = new Transaction(500.00m, new DateTime(2014, 2, 23), TransactionType.credit);
+            Transaction transaction2 = new Transaction(200.00m, new DateTime(2014, 3, 1), TransactionType.debit);
+            Transaction transaction3 = new Transaction(135.50m, new DateTime(2014, 3, 12), TransactionType.debit);
+            Repository checkingRepo = new Repository(AccountType.checking);
+            checkingRepo.Post(transaction1);
+            Repository savingsRepo = new Repository(AccountType.savings);
+            savingsRepo.Post(transaction2);
+            checkingRepo.Post(transaction3); 
         }
 
         [TestMethod]
-        public void save_transaction_bad_path()
+        public void trans_getall()
         {
-            TransactionSystem objSystem = new TransactionSystem();
-            bool success;
-            try
-            {
-                success = objSystem.Save(createTransactions(), "C:\\Users\\David\\SkyDrive\\School\\Spring 2014\\OOD\\Assignments\\Assignment 3\\Save Files\\wrongname.txt");
-            }
-            catch(FileNotFoundException e)
-            {
-                success = false; 
-            }
-        }
-
-        [TestMethod]
-        public void transaction_system_GetAll_validPath()
-        {
-            TransactionSystem objSystem = new TransactionSystem();
-            IList<Transaction> transactions = objSystem.GetAll("C:\\Users\\David\\SkyDrive\\School\\Spring 2014\\OOD\\Assignments\\Assignment 3\\Save Files\\Savings.txt"); 
-        }
-
-        [TestMethod]
-        public void transaction_system_GetAll_invalidPath()
-        {
-            TransactionSystem objSystem = new TransactionSystem();
-            try
-            {
-                IList<Transaction> transactions = objSystem.GetAll("C:\\Users\\David\\SkyDrive\\School\\Spring 2014\\OOD\\Assignments\\Assignment 3\\Save Files\\wrongname.txt");
-            }
-            catch (FileNotFoundException e)
-            {
-                FileNotFoundException exception = e; 
-            }
-        }
-
-        [TestMethod]
-        public void transaction_system_GetAll_invalidData()
-        {
-            TransactionSystem objSystem = new TransactionSystem();
-            try
-            {
-                IList<Transaction> transactions = objSystem.GetAll("C:\\Users\\David\\SkyDrive\\School\\Spring 2014\\OOD\\Assignments\\Assignment 3\\Save Files\\Savings.txt");
-            }
-            catch(InvalidCastException e)
-            {
-                InvalidCastException exception = e; 
-            }
+            Repository checkrepo = new Repository(AccountType.checking);
+            IList<Transaction> result = new List<Transaction>();
+            result = checkrepo.GetAll(); 
         }
     }
 }

@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 namespace Banking
 {
     public class Transaction
-    {
-        public enum Type { credit, debit }; 
-        
+    {        
+        // members
         private decimal amount;
         private DateTime date;
-        private Type type;
+        private TransactionType type;
 
+        // constructors
         public Transaction() { }
-
-        public Transaction(decimal amt, DateTime dt, Type typ)
+        public Transaction(decimal amt, DateTime dt, TransactionType typ)
         {
             amount = Math.Abs(amt);
             date = dt;
             type = typ; 
         }
 
+        // properties
         public decimal Amount
         {
             get { return amount; }
@@ -33,13 +33,13 @@ namespace Banking
             get { return date; }
             set { date = value; }
         }
-        public Type CreditOrDebit
+        public TransactionType CreditOrDebit
         {
             get { return type; }
             set { type = value; }
         }
-
-
+        
+        // public functions
         public String toCSV()
         {
             String result = "";
@@ -47,4 +47,5 @@ namespace Banking
             return result; 
         }
     }
+    public enum TransactionType { credit, debit }; 
 }
