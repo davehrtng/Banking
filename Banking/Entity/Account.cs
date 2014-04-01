@@ -38,11 +38,16 @@ namespace Banking
             objTransactionManager.Add(amt, DateTime.Today, TransactionType.credit);
             balance = objTransactionManager.ComputeBalance(); 
         }
+        public void SignCheck(decimal amt, String orderof)
+        {
+            objTransactionManager.Add(amt, DateTime.Today, orderof); 
+        }
 
         // withdraw money from account
         public bool Withdraw(decimal amt)
         {
-            bool result; 
+            bool result;
+            updateBalance(); 
             if (amt <= balance)
             {
                 objTransactionManager.Add(amt, DateTime.Today, TransactionType.debit);
@@ -63,14 +68,29 @@ namespace Banking
         }
         public decimal Balance
         {
-            get { return balance; } 
+            get { updateBalance();  return balance; } 
         }
         public IList<Transaction> Transactions
         {
-            get { return objTransactionManager.Transactions; }
+            get { return objTransactionManager.GetAll(); }
         }
     }
 
     // account type - static member
-    public enum AccountType { checking, savings }; 
+    public enum AccountType { checking, savings };
+
+    public static class AccountTypeExtensions
+    {
+        public static AccountType otherAccount(this AccountType thisAccount)
+        {
+            if (thisAccount == AccountType.checking)
+            {
+                return AccountType.savings;
+            }
+            else
+            {
+                return AccountType.checking; 
+            }
+        }
+    }
 }

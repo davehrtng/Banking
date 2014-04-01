@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AccountTest.cs" />
+    <Compile Include="CheckTest.cs" />
     <Compile Include="TransactionManagerTest.cs" />
     <Compile Include="TransactionSystemTest.cs" />
     <Compile Include="TransactionTest.cs" />

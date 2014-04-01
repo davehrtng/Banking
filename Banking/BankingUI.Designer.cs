@@ -30,12 +30,14 @@ namespace Banking
         private void InitializeComponent()
         {
             this.lblAccount = new System.Windows.Forms.Label();
-            this.cbAccount = new System.Windows.Forms.ComboBox();
             this.lblBalance = new System.Windows.Forms.Label();
             this.lblBalanceAmount = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.gbAccount = new System.Windows.Forms.GroupBox();
+            this.cbAccount = new System.Windows.Forms.ComboBox();
             this.gbTransaction = new System.Windows.Forms.GroupBox();
+            this.tbOrderOf = new System.Windows.Forms.TextBox();
+            this.chCheck = new System.Windows.Forms.CheckBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnAddTransaction = new System.Windows.Forms.Button();
             this.lblFromAccount = new System.Windows.Forms.Label();
@@ -56,19 +58,6 @@ namespace Banking
             this.lblAccount.Size = new System.Drawing.Size(47, 13);
             this.lblAccount.TabIndex = 0;
             this.lblAccount.Text = "Account";
-            // 
-            // cbAccount
-            // 
-            this.cbAccount.FormattingEnabled = true;
-            this.cbAccount.Items.AddRange(new object[] {
-            "Checking",
-            "Savings"});
-            this.cbAccount.Location = new System.Drawing.Point(59, 34);
-            this.cbAccount.Name = "cbAccount";
-            this.cbAccount.Size = new System.Drawing.Size(121, 21);
-            this.cbAccount.TabIndex = 1;
-            this.cbAccount.Text = "Pick an account";
-            this.cbAccount.SelectedIndexChanged += new System.EventHandler(this.cbAccount_SelectedIndexChanged);
             // 
             // lblBalance
             // 
@@ -92,7 +81,7 @@ namespace Banking
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(30, 26);
+            this.lblDate.Location = new System.Drawing.Point(30, 35);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(81, 13);
             this.lblDate.TabIndex = 4;
@@ -100,10 +89,10 @@ namespace Banking
             // 
             // gbAccount
             // 
+            this.gbAccount.Controls.Add(this.cbAccount);
             this.gbAccount.Controls.Add(this.lblBalanceAmount);
             this.gbAccount.Controls.Add(this.lblAccount);
             this.gbAccount.Controls.Add(this.lblBalance);
-            this.gbAccount.Controls.Add(this.cbAccount);
             this.gbAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAccount.Location = new System.Drawing.Point(33, 51);
             this.gbAccount.Name = "gbAccount";
@@ -112,8 +101,20 @@ namespace Banking
             this.gbAccount.TabStop = false;
             this.gbAccount.Text = "Choose an account";
             // 
+            // cbAccount
+            // 
+            this.cbAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAccount.FormattingEnabled = true;
+            this.cbAccount.Location = new System.Drawing.Point(58, 34);
+            this.cbAccount.Name = "cbAccount";
+            this.cbAccount.Size = new System.Drawing.Size(121, 21);
+            this.cbAccount.TabIndex = 4;
+            this.cbAccount.SelectedIndexChanged += new System.EventHandler(this.cbAccount_SelectedIndexChanged);
+            // 
             // gbTransaction
             // 
+            this.gbTransaction.Controls.Add(this.tbOrderOf);
+            this.gbTransaction.Controls.Add(this.chCheck);
             this.gbTransaction.Controls.Add(this.btnClear);
             this.gbTransaction.Controls.Add(this.btnAddTransaction);
             this.gbTransaction.Controls.Add(this.lblFromAccount);
@@ -123,33 +124,55 @@ namespace Banking
             this.gbTransaction.Controls.Add(this.cbTransaction);
             this.gbTransaction.Location = new System.Drawing.Point(33, 169);
             this.gbTransaction.Name = "gbTransaction";
-            this.gbTransaction.Size = new System.Drawing.Size(200, 200);
+            this.gbTransaction.Size = new System.Drawing.Size(200, 220);
             this.gbTransaction.TabIndex = 6;
             this.gbTransaction.TabStop = false;
             this.gbTransaction.Text = "Make a transaction";
             // 
+            // tbOrderOf
+            // 
+            this.tbOrderOf.Location = new System.Drawing.Point(6, 160);
+            this.tbOrderOf.Name = "tbOrderOf";
+            this.tbOrderOf.Size = new System.Drawing.Size(160, 20);
+            this.tbOrderOf.TabIndex = 8;
+            this.tbOrderOf.Visible = false;
+            // 
+            // chCheck
+            // 
+            this.chCheck.AutoSize = true;
+            this.chCheck.Location = new System.Drawing.Point(7, 137);
+            this.chCheck.Name = "chCheck";
+            this.chCheck.Size = new System.Drawing.Size(78, 17);
+            this.chCheck.TabIndex = 7;
+            this.chCheck.Text = "sign check";
+            this.chCheck.UseVisualStyleBackColor = true;
+            this.chCheck.Visible = false;
+            this.chCheck.CheckedChanged += new System.EventHandler(this.chCheck_CheckedChanged);
+            // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(91, 171);
+            this.btnClear.Location = new System.Drawing.Point(91, 191);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnAddTransaction
             // 
-            this.btnAddTransaction.Location = new System.Drawing.Point(9, 171);
+            this.btnAddTransaction.Location = new System.Drawing.Point(10, 191);
             this.btnAddTransaction.Name = "btnAddTransaction";
             this.btnAddTransaction.Size = new System.Drawing.Size(75, 23);
             this.btnAddTransaction.TabIndex = 5;
             this.btnAddTransaction.Text = "Confirm";
             this.btnAddTransaction.UseVisualStyleBackColor = true;
+            this.btnAddTransaction.Click += new System.EventHandler(this.btnAddTransaction_Click);
             // 
             // lblFromAccount
             // 
             this.lblFromAccount.AutoSize = true;
-            this.lblFromAccount.Location = new System.Drawing.Point(6, 139);
+            this.lblFromAccount.Location = new System.Drawing.Point(6, 120);
             this.lblFromAccount.Name = "lblFromAccount";
             this.lblFromAccount.Size = new System.Drawing.Size(33, 13);
             this.lblFromAccount.TabIndex = 4;
@@ -158,7 +181,7 @@ namespace Banking
             // lblToAccount
             // 
             this.lblToAccount.AutoSize = true;
-            this.lblToAccount.Location = new System.Drawing.Point(6, 126);
+            this.lblToAccount.Location = new System.Drawing.Point(6, 107);
             this.lblToAccount.Name = "lblToAccount";
             this.lblToAccount.Size = new System.Drawing.Size(23, 13);
             this.lblToAccount.TabIndex = 3;
@@ -182,30 +205,27 @@ namespace Banking
             // 
             // cbTransaction
             // 
+            this.cbTransaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTransaction.FormattingEnabled = true;
-            this.cbTransaction.Items.AddRange(new object[] {
-            "Deposit",
-            "Withdraw",
-            "Transfer"});
             this.cbTransaction.Location = new System.Drawing.Point(9, 40);
             this.cbTransaction.Name = "cbTransaction";
             this.cbTransaction.Size = new System.Drawing.Size(121, 21);
             this.cbTransaction.TabIndex = 0;
-            this.cbTransaction.Text = "Pick a transaction";
+            this.cbTransaction.SelectedIndexChanged += new System.EventHandler(this.cbTransaction_SelectedIndexChanged);
             // 
             // lbHistory
             // 
             this.lbHistory.FormattingEnabled = true;
             this.lbHistory.Location = new System.Drawing.Point(265, 34);
             this.lbHistory.Name = "lbHistory";
-            this.lbHistory.Size = new System.Drawing.Size(616, 329);
+            this.lbHistory.Size = new System.Drawing.Size(616, 355);
             this.lbHistory.TabIndex = 7;
             // 
             // BankingUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 397);
+            this.ClientSize = new System.Drawing.Size(902, 407);
             this.Controls.Add(this.lbHistory);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.gbTransaction);
@@ -224,7 +244,6 @@ namespace Banking
         #endregion
 
         private System.Windows.Forms.Label lblAccount;
-        private System.Windows.Forms.ComboBox cbAccount;
         private System.Windows.Forms.Label lblBalance;
         private System.Windows.Forms.Label lblBalanceAmount;
         private System.Windows.Forms.Label lblDate;
@@ -238,6 +257,9 @@ namespace Banking
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAddTransaction;
         private System.Windows.Forms.ListBox lbHistory;
+        private System.Windows.Forms.ComboBox cbAccount;
+        private System.Windows.Forms.TextBox tbOrderOf;
+        private System.Windows.Forms.CheckBox chCheck;
     }
 }
 

@@ -19,9 +19,23 @@ namespace Banking
             savings = new Account(AccountType.savings);
         }
 
-        // properties
 
         // public functions 
+        public decimal Balance(AccountType type)
+        {
+            if (type == AccountType.checking)
+            {
+                return checking.Balance; 
+            }
+            else if (type == AccountType.savings)
+            {
+                return savings.Balance;
+            }
+            else
+            {
+                throw new ArgumentException("not a valid account type"); 
+            }
+        }
         public void Deposit(AccountType type, decimal amt)
         {
             if (type == AccountType.checking)
@@ -31,6 +45,17 @@ namespace Banking
             else
             {
                 savings.Deposit(amt);
+            }
+        }
+        public void SignCheck(AccountType type, decimal amt, String recipient)
+        {
+            if (type == AccountType.checking)
+            {
+                checking.SignCheck(amt, recipient); 
+            }
+            else 
+            {
+                savings.SignCheck(amt, recipient); 
             }
         }
         public bool Withdraw(AccountType type, decimal amt)
@@ -92,7 +117,18 @@ namespace Banking
         }
         public IList<Transaction> GetTransactions(AccountType type)
         {
-            throw new NotImplementedException();
+            if (type == AccountType.checking)
+            {
+                return checking.Transactions;
+            }
+            else if (type == AccountType.savings)
+            {
+                return savings.Transactions;
+            }
+            else
+            {
+                throw new ArgumentException("not a valid account type"); 
+            }
         }
     }
 }

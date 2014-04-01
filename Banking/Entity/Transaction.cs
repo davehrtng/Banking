@@ -9,9 +9,9 @@ namespace Banking
     public class Transaction
     {        
         // members
-        private decimal amount;
-        private DateTime date;
-        private TransactionType type;
+        protected decimal amount;
+        protected DateTime date;
+        protected TransactionType type;
 
         // constructors
         public Transaction() { }
@@ -40,7 +40,7 @@ namespace Banking
         }
         
         // public functions
-        public String toCSV()
+        public virtual String toCSV()
         {
             String result = "";
             result += amount + "," + date.ToShortDateString() + "," + type;

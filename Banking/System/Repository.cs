@@ -34,20 +34,36 @@ namespace Banking
             {
                 throw new InvalidCastException("datetime");
             }
-            TransactionType type;
-            if (parts[2].Equals("debit"))
+            if (parts.Length > 3)
             {
-                type = TransactionType.debit;
-            }
-            else if (parts[2].Equals("credit"))
-            {
-                type = TransactionType.credit;
+                String recipient;
+                try
+                {
+                    recipient = parts[3];
+                }
+                catch
+                {
+                    throw new InvalidCastException("check");
+                }
+                return new Check(amount, date, recipient);
             }
             else
             {
-                throw new InvalidCastException("type"); 
+                TransactionType type;
+                if (parts[2].Equals("debit"))
+                {
+                    type = TransactionType.debit;
+                }
+                else if (parts[2].Equals("credit"))
+                {
+                    type = TransactionType.credit;
+                }
+                else
+                {
+                    throw new InvalidCastException("type");
+                }
+                return new Transaction(amount, date, type);
             }
-            return new Transaction(amount, date, type); 
         }
         
         // public functions 

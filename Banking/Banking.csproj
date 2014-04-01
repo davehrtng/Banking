@@ -47,6 +47,7 @@
     <Compile Include="Controller\AccountManager.cs" />
     <Compile Include="Controller\TransactionManager.cs" />
     <Compile Include="Entity\Account.cs" />
+    <Compile Include="Entity\Check.cs" />
     <Compile Include="Entity\Transaction.cs" />
     <Compile Include="BankingUI.cs">
       <SubType>Form</SubType>

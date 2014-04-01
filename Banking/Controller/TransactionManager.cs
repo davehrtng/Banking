@@ -22,8 +22,8 @@ namespace Banking
 
         public TransactionManager(AccountType type)
         {
-            transactions = new List<Transaction>();
             accountType = type;
+            transactions = new List<Transaction>();
         }
         
         public decimal ComputeBalance()
@@ -59,6 +59,13 @@ namespace Banking
             trans = repo.Post(trans);
             transactions.Add(trans); 
             return trans; 
+        }
+
+        public Transaction Add(decimal amt, DateTime dateTime, string orderof)
+        {
+            Transaction check = new Check(amt, dateTime, orderof);
+            Repository repo = new Repository(accountType);
+            return repo.Post(check); 
         }
     }
 }
