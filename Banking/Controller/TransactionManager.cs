@@ -26,6 +26,7 @@ namespace Banking
             transactions = new List<Transaction>();
         }
         
+        // loop through all transactions to sum up the balance (+ for credit, - for debit)
         public decimal ComputeBalance()
         {
             decimal result = 0.00m; 
@@ -43,6 +44,7 @@ namespace Banking
             return result; 
         }
 
+        // ask the repository to get all the transactions
         public IList<Transaction> GetAll()
         {
             Repository repo = new Repository(accountType);
@@ -51,6 +53,7 @@ namespace Banking
             return transactions; 
         }
 
+        // add a transaction
         public Transaction Add(decimal amt, DateTime dateTime, TransactionType type)
         {
             // TODO: prevent debits from overdrawing 
@@ -61,6 +64,7 @@ namespace Banking
             return trans; 
         }
 
+        // add a check 
         public Transaction Add(decimal amt, DateTime dateTime, string orderof)
         {
             Transaction check = new Check(amt, dateTime, orderof);

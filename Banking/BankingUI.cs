@@ -23,18 +23,27 @@ namespace Banking
             cbTransaction.Items.Add(new DropDownItem("Transfer", "Transfer"));
         }
 
+        // clears out and reloads the transactions in the listbox 
         private void lbHistory_Update(AccountManager objAcctMan, AccountType acctType)
         {
             IList<Transaction> history = new List<Transaction>();
-            history = objAcctMan.GetTransactions(acctType); 
-            lbHistory.Items.Clear();
-            foreach (Transaction trans in history)
+            try
             {
-                lbHistory.Items.Add(trans.toCSV());
+                history = objAcctMan.GetTransactions(acctType);
+                lbHistory.Items.Clear();
+                foreach (Transaction trans in history)
+                {
+                    lbHistory.Items.Add(trans.toCSV());
+                }
+                lblBalanceAmount.Text = Convert.ToString(objAcctMan.Balance(acctType));
             }
-            lblBalanceAmount.Text = Convert.ToString(objAcctMan.Balance(acctType));
+            catch
+            {
+                MessageBox.Show("Please select a folder with save files before proceeding."); 
+            }
         }
 
+        // clears out the informaiton in the transaction group box
         private void clear_transaction()
         {
             cbTransaction.SelectedItem = null;
@@ -50,6 +59,7 @@ namespace Banking
 
         }
 
+        // when the user changes accounts, we want to update the listbox and the balance
         private void cbAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
             AccountDropDownItem item = (AccountDropDownItem)cbAccount.SelectedItem;
@@ -58,6 +68,7 @@ namespace Banking
             lbHistory_Update(objAcctManager, item.AccountType);
         }
 
+        // when the user changes transactions, we need to update the "to" and "from" accounts, and display check info if it's a deposit. 
         private void cbTransaction_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbAccount.SelectedItem != null && cbTransaction.SelectedItem != null)
@@ -73,13 +84,13 @@ namespace Banking
                 if (item.Value.Equals("Deposit"))
                 {
                     lblFromAccount.Text += otherAccount;
-                    lblToAccount.Text += selectedAccount;
-                    chCheck.Visible = true; 
+                    lblToAccount.Text += selectedAccount; 
                 }
                 else if (item.Value.Equals("Withdrawal"))
                 {
                     lblFromAccount.Text += selectedAccount;
                     lblToAccount.Text += otherAccount;
+                    chCheck.Visible = true;
                 }
                 else if (item.Value.Equals("Transfer"))
                 {
@@ -101,6 +112,7 @@ namespace Banking
             }
         }
 
+        // when the user confirms their transaction submission, we create an account manager, determine the transaction type, and call the corresponding function on the acctmanager
         private void btnAddTransaction_Click(object sender, EventArgs e)
         {
             String transaction = ((DropDownItem)cbTransaction.SelectedItem).Value; 
@@ -114,18 +126,17 @@ namespace Banking
                 {
                     amount = Convert.ToDecimal(tbAmount.Text);
                     if (transaction == "Deposit")
-                    {
-                        if (chCheck.Checked)
-                        {
-                            objAcctManager.SignCheck(selectedAccountType, amount, tbOrderOf.Text); 
-                        }
-                        else
-                        {
+                    {                       
+                        
                             objAcctManager.Deposit(selectedAccountType, amount);
-                        }
+                        
                     }
                     else if (transaction == "Withdrawal")
                     {
+                        if (chCheck.Checked)
+                        {
+                            objAcctManager.SignCheck(selectedAccountType, amount, tbOrderOf.Text);
+                        }
                         if (!objAcctManager.Withdraw(selectedAccountType, amount))
                         {
                             MessageBox.Show("Insufficient funds in " + selectedAccountType + " account to make withdrawal");
@@ -148,22 +159,26 @@ namespace Banking
             }
         }
 
+        // calls clear_transaction when the user clicks to clear out all info in the transaction grouop box
         private void btnClear_Click(object sender, EventArgs e)
         {
             clear_transaction(); 
         }
 
+        // when checked, show a "pay to the order of" text box
         private void chCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (chCheck.Checked) { tbOrderOf.Visible = true; }
             else { tbOrderOf.Visible = false; } 
         }
-
+        
+        // quit the program
         private void mnuFileExit_Click(object sender, EventArgs e)
         {
             Application.Exit(); 
         }
 
+        // choose the folder containing the save files
         private void mnuFilePath_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -179,6 +194,7 @@ namespace Banking
 
     /*
      * Helper classes for the UI  
+     * It's easiest to work with combo boxes when the items in them are actual classes 
      */
     public class DropDownItem
     {

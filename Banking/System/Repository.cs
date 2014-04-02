@@ -10,13 +10,13 @@ namespace Banking
     public class Repository
     {
         // members
-        private static String rootpath = "";
-        public static String Path
+        private static String rootpath = ""; // the path of the folder containing the text files
+        public static String Path // it's accessible to the UI so that it can be changed with the folder dialog
         {
             get { return rootpath; }
             set { rootpath = value; }
         }
-        private String path; 
+        private String path; // we will build actual file paths into this, so that we never change the static path variable. 
         
         // private functions
         private Transaction csvToTransaction(String csv)
@@ -91,28 +91,7 @@ namespace Banking
             }
         }
 
-        // public bool Save(IList<Transaction> transactions, String path)
-        //{
-        //    bool success = false;
-        //    if (File.Exists(path))
-        //    {
-        //        using (StreamWriter writer = new StreamWriter(path, true))
-        //        {
-        //            foreach (Transaction tran in transactions)
-        //            {
-        //                writer.WriteLine(tran.toCSV());
-        //            }
-        //        }
-        //        success = true; 
-        //    }
-        //    else
-        //    {
-        //        success = false;
-        //        throw new FileNotFoundException(); 
-        //    }
-        //    return success; 
-        //}     
-
+        // get all transactions for this account from the file
         public IList<Transaction> GetAll()
         {
             if (File.Exists(path))
@@ -134,6 +113,7 @@ namespace Banking
             }
         }
 
+        // write a new transaction to the file 
         public Transaction Post(Transaction trans)
         {
             try

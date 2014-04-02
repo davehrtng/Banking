@@ -38,6 +38,7 @@ namespace Banking
             objTransactionManager.Add(amt, DateTime.Today, TransactionType.credit);
             balance = objTransactionManager.ComputeBalance(); 
         }
+        // deposit a check into an account
         public void SignCheck(decimal amt, String orderof)
         {
             objTransactionManager.Add(amt, DateTime.Today, orderof); 
@@ -76,7 +77,7 @@ namespace Banking
         }
     }
 
-    // account type - static member
+    // account type class helps distinguish between different accounts 
     public enum AccountType { checking, savings };
 
     public static class AccountTypeExtensions

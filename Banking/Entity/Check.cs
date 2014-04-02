@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Banking
 {
+    /*
+     * a check is just like a transaction (a withdrawal, specifically) except it also has an extra string associated with it - the recipient of the check
+     */
     public class Check : Transaction
     {
         private String recipient;
@@ -18,7 +21,7 @@ namespace Banking
         {
             amount = amt;
             date = dt;
-            type = TransactionType.credit; 
+            type = TransactionType.debit; 
             recipient = orderof; 
         }
         public override String toCSV()
