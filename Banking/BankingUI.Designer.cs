@@ -46,8 +46,13 @@ namespace Banking
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.cbTransaction = new System.Windows.Forms.ComboBox();
             this.lbHistory = new System.Windows.Forms.ListBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFilePath = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.gbAccount.SuspendLayout();
             this.gbTransaction.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAccount
@@ -221,21 +226,58 @@ namespace Banking
             this.lbHistory.Size = new System.Drawing.Size(616, 355);
             this.lbHistory.TabIndex = 7;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFile});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(902, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mnuFile
+            // 
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFilePath,
+            this.mnuFileExit});
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
+            this.mnuFile.Text = "File";
+            // 
+            // mnuFilePath
+            // 
+            this.mnuFilePath.Name = "mnuFilePath";
+            this.mnuFilePath.Size = new System.Drawing.Size(205, 22);
+            this.mnuFilePath.Text = "Choose save file location";
+            this.mnuFilePath.Click += new System.EventHandler(this.mnuFilePath_Click);
+            // 
+            // mnuFileExit
+            // 
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.Size = new System.Drawing.Size(205, 22);
+            this.mnuFileExit.Text = "Exit";
+            this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
+            // 
             // BankingUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 407);
+            this.ClientSize = new System.Drawing.Size(902, 405);
             this.Controls.Add(this.lbHistory);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.gbTransaction);
             this.Controls.Add(this.gbAccount);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "BankingUI";
             this.Text = "Banking";
             this.gbAccount.ResumeLayout(false);
             this.gbAccount.PerformLayout();
             this.gbTransaction.ResumeLayout(false);
             this.gbTransaction.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,6 +302,10 @@ namespace Banking
         private System.Windows.Forms.ComboBox cbAccount;
         private System.Windows.Forms.TextBox tbOrderOf;
         private System.Windows.Forms.CheckBox chCheck;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuFilePath;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
     }
 }
 

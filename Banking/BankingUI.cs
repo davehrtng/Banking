@@ -159,6 +159,21 @@ namespace Banking
             else { tbOrderOf.Visible = false; } 
         }
 
+        private void mnuFileExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); 
+        }
+
+        private void mnuFilePath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Repository.Path = dialog.SelectedPath;
+                MessageBox.Show("Make sure you have a files named \"Savings.txt\" and \"Checking.txt\" in the selected folder."); 
+            }
+        }
+
         
     }
 

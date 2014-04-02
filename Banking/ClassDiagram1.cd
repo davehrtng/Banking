@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Banking.BankingUI" Collapsed="true">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAQCQAAIIAEAiARAQCAkAAIAAkAgAJAREAIAA=</HashCode>
+      <FileName>BankingUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.DropDownItem" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAEACAAAAAgAAAAAAA=</HashCode>
+      <FileName>BankingUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.AccountDropDownItem" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>BankingUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.TransactionDropDownItem" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>BankingUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.AccountManager" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAgAAQAEAQgAAAAABAAAAAAAAAI=</HashCode>
+      <FileName>Controller\AccountManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.TransactionManager" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAgAA=</HashCode>
+      <FileName>Controller\TransactionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.Account" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAAgAAAAAAAAAAAgAAAAMAAABAAAAASAAAAAAAAI=</HashCode>
+      <FileName>Entity\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.AccountTypeExtensions" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.Check" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Entity\Check.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.Transaction" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAASAAAABgAABAAAAAQBAAAA=</HashCode>
+      <FileName>Entity\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.Program" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.Repository" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAACAAAACAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>System\Repository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.Properties.Resources" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Banking.Properties.Settings" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Banking.AccountType" Collapsed="true">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Account.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Banking.TransactionType" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

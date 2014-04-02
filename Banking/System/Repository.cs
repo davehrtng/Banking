@@ -10,7 +10,13 @@ namespace Banking
     public class Repository
     {
         // members
-        private String path = "C:\\Users\\David\\SkyDrive\\School\\Spring 2014\\OOD\\Assignments\\Assignment 3\\Save Files\\"; 
+        private static String rootpath = "";
+        public static String Path
+        {
+            get { return rootpath; }
+            set { rootpath = value; }
+        }
+        private String path; 
         
         // private functions
         private Transaction csvToTransaction(String csv)
@@ -70,6 +76,7 @@ namespace Banking
         
         public Repository(AccountType acctType)
         {
+            path = rootpath; 
             if (acctType == AccountType.checking)
             {
                 path += "\\Checking.txt";

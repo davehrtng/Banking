@@ -70,6 +70,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Documentation\description.pdf" />
     <None Include="Documentation\diagrams alternate.vsdx" />
     <None Include="Documentation\TOE.docx" />
